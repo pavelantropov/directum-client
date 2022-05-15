@@ -13,15 +13,14 @@ namespace ClientApp.Views
         public FormPage()
         {
             InitializeComponent();
-            LoadDynamicFields();
+            LoadForm(Properties.Resources.Form2);
+            GenerateFormElements(Form);
             BindingContext = new FormViewModel();
         }
 
-        public void LoadDynamicFields()
+        public void LoadForm(byte[] bytes)
         {
-            if (!(Properties.Resources.ResourceManager.GetObject("Form1") is byte[] fileBytes)) return;
-
-            using var stream = new MemoryStream(fileBytes);
+            using var stream = new MemoryStream(bytes);
             using var reader = new StreamReader(stream);
 
             var json = reader.ReadToEnd();
@@ -29,6 +28,16 @@ namespace ClientApp.Views
             var data = JsonConvert.DeserializeObject<JsonData>(json);
             
             Form = data?.Form;
+        }
+
+        private void GenerateFormElements(Form form)
+        {
+            if (form == null) return;
+
+            foreach (var item in form.Items)
+            {
+                item.AddToLayout(FormStack);
+            }
         }
     }
 }
