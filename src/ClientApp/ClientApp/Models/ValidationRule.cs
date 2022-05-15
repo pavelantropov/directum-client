@@ -4,7 +4,6 @@ namespace ClientApp.Models
 {
     public class ValidationRule
     {
-        // TODO enum?
-        public string Type { get; set; }
+        public ValidationType Type { get; set; }
     }
 }
