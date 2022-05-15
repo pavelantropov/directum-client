@@ -14,6 +14,8 @@ namespace ClientApp.Models.Abstractions
         public string Class { get; set; }
         public bool Disabled { get; set; }
 
+        public abstract bool IsValid { get; }
+        
         public abstract void AddToLayout(StackLayout layout);
     }
 }

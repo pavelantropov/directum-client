@@ -1,4 +1,6 @@
-﻿using ClientApp.Models.Abstractions;
+﻿using System.Linq;
+using ClientApp.Models.Abstractions;
+using ClientApp.Models.Enums;
 using Xamarin.Forms;
 
 namespace ClientApp.Models
@@ -6,6 +8,9 @@ namespace ClientApp.Models
     public class Radio : BaseElement
     {
         public RadioOption[] Items { get; set; }
+
+        public override bool IsValid => 
+            !(Required || ValidationRules.Type == ValidationType.RADIO) || Items.Any(item => item.Checked);
 
         public override void AddToLayout(StackLayout layout)
         {

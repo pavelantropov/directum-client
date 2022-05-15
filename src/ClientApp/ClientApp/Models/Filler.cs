@@ -7,6 +7,8 @@ namespace ClientApp.Models
     {
         public string Message { get; set; }
 
+        public bool IsValid => !string.IsNullOrEmpty(Message);
+
         public void AddToLayout(StackLayout layout)
         {
             var html = new HtmlWebViewSource

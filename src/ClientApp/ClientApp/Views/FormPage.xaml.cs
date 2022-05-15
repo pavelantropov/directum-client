@@ -1,22 +1,20 @@
-﻿using System.IO;
-using ClientApp.Models;
+﻿using ClientApp.Models;
 using ClientApp.Services;
 using ClientApp.ViewModels;
-using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace ClientApp.Views
 {
     public partial class FormPage : ContentPage
     {
+        private Form _form;
+
         public FormPage()
         {
             InitializeComponent();
-            FormService.LoadForm(Properties.Resources.Form2);
-            FormService.GenerateFormElements(Form, FormStack);
+            _form = FormService.LoadForm(Properties.Resources.Form2);
+            FormService.GenerateFormElements(_form, FormStack);
             BindingContext = new FormViewModel();
         }
-
-        public Form Form { get; set; }
     }
 }

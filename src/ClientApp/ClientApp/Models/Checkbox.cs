@@ -1,4 +1,5 @@
 ﻿using ClientApp.Models.Abstractions;
+using ClientApp.Models.Enums;
 using Xamarin.Forms;
 
 namespace ClientApp.Models
@@ -6,6 +7,9 @@ namespace ClientApp.Models
     public class Checkbox : BaseElement
     {
         public bool Checked { get; set; }
+
+        public override bool IsValid => 
+            !(Required || ValidationRules.Type == ValidationType.CHECKBOX) || Checked;
 
         public override void AddToLayout(StackLayout layout)
         {

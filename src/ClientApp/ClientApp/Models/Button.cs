@@ -8,6 +8,8 @@ namespace ClientApp.Models
         public string Class { get; set; }
         public string Text { get; set; }
 
+        public bool IsValid => !string.IsNullOrEmpty(Text);
+
         public void AddToLayout(StackLayout layout)
         {
             var button = new Xamarin.Forms.Button
