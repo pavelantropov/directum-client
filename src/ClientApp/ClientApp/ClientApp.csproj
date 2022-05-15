@@ -15,4 +15,8 @@
       <DependentUpon>FormPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="resources\" />
+  </ItemGroup>
 </Project>
