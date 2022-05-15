@@ -14,7 +14,7 @@ namespace ClientApp.Views
             InitializeComponent();
             _form = FormService.LoadForm(Properties.Resources.Form2);
             FormService.GenerateFormElements(_form, FormStack);
-            BindingContext = new FormViewModel();
+            BindingContext = new FormViewModel(_form);
         }
     }
 }
