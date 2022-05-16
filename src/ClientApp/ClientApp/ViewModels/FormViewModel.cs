@@ -4,35 +4,27 @@ using Xamarin.Forms;
 
 namespace ClientApp.ViewModels
 {
-    // TODO
-    internal class FormViewModel : BaseViewModel
+    public class FormViewModel
     {
-        private Form _form;
-
-        public FormViewModel(Form form)
+        public FormViewModel()
         {
-            _form = form;
-            Title = _form.Name;
-
-            SaveCommand = new Command(OnSave, ValidateSave);
-            PropertyChanged +=
-                (_, __) => SaveCommand.ChangeCanExecute();
+            ButtonClickCommand = new Command(OnButtonClick, ValidateButtonClick);
         }
 
-        private bool ValidateSave()
+        private bool ValidateButtonClick()
         {
-            return _form.Items.All(i => i.IsValid);
+            // TODO fix validation
+            // return Form.Items.All(i => i.IsValid);
+            return true;
         }
+
+        public Form Form { get; set; }
+
+        public Command ButtonClickCommand { get; }
         
-        public Command SaveCommand { get; }
-        
-        
-        private async void OnSave()
+        private async void OnButtonClick()
         {
-            await Application.Current.MainPage.DisplayAlert(_form.Name, _form.PostMessage, "OK");
-        
-            // This will pop the current page off the navigation stack
-            await Shell.Current.GoToAsync("..");
+            await Application.Current.MainPage.DisplayAlert(Form.Name, Form.PostMessage, "OK");
         }
     }
 }

@@ -1,8 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using ClientApp.Models;
+using ClientApp.ViewModels;
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using Button = ClientApp.Models.Button;
 
 namespace ClientApp.Services
 {
@@ -20,12 +21,17 @@ namespace ClientApp.Services
             return data?.Form;
         }
 
-        public static void GenerateFormElements(Form form, StackLayout layout)
+        public static void GenerateFormElements(Form form, StackLayout layout, FormViewModel model)
         {
             if (form == null || layout == null) return;
 
             foreach (var item in form.Items)
             {
+                if (item is Button button)
+                {
+                    button.Command = model.ButtonClickCommand;
+                }
+
                 item.AddToLayout(layout);
             }
         }
