@@ -1,10 +1,12 @@
 ﻿using ClientApp.Models.Abstractions;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace ClientApp.Models
 {
     public class Filler : IFormElement
     {
+        [JsonProperty(Required = Required.AllowNull)]
         public string Message { get; set; }
 
         public bool IsValid => !string.IsNullOrEmpty(Message);

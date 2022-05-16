@@ -1,12 +1,14 @@
 ﻿using System.Linq;
 using ClientApp.Models.Abstractions;
 using ClientApp.Models.Enums;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace ClientApp.Models
 {
     public class Radio : BaseElement
     {
+        [JsonProperty(Required = Newtonsoft.Json.Required.Always)]
         public RadioOption[] Items { get; set; }
 
         public override bool IsValid => 
@@ -27,7 +29,6 @@ namespace ClientApp.Models
                 };
 
                 // TODO set bindings
-                // radioButton.SetBinding(RadioButton.IsCheckedProperty, new Binding("IsChecked"));
                 radioButton.BindingContext = this;
 
                 layout.Children.Add(label);

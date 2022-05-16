@@ -1,12 +1,14 @@
 ﻿using System.Linq;
 using ClientApp.Models.Abstractions;
 using ClientApp.Models.Enums;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace ClientApp.Models
 {
     public class Select : BaseElement
     {
+        [JsonProperty(Required = Newtonsoft.Json.Required.Always)]
         public SelectOption[] Options { get; set; }
 
         public override bool IsValid =>

@@ -1,11 +1,13 @@
 ﻿using ClientApp.Models.Abstractions;
 using ClientApp.Models.Enums;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace ClientApp.Models
 {
     public class Checkbox : BaseElement
     {
+        [JsonProperty(Required = Newtonsoft.Json.Required.Always)]
         public bool Checked { get; set; }
 
         public override bool IsValid => 
@@ -23,7 +25,7 @@ namespace ClientApp.Models
                 IsChecked = Checked,
             };
 
-            checkBox.SetBinding(CheckBox.IsCheckedProperty, nameof(Checked));
+            checkBox.SetBinding(CheckBox.IsCheckedProperty, nameof(Checked), BindingMode.TwoWay);
             checkBox.BindingContext = this;
 
             layout.Children.Add(label);
