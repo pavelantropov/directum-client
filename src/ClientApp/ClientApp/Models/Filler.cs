@@ -11,12 +11,9 @@ namespace ClientApp.Models
 
         public void AddToLayout(StackLayout layout)
         {
-            var html = new HtmlWebViewSource
-            {
-                Html = Message,
-            };
+            var html = new HtmlWebViewSource { Html = Message };
 
-            var filler = new WebView()
+            var filler = new WebView
             {
                 Source = html,
                 VerticalOptions = LayoutOptions.FillAndExpand,

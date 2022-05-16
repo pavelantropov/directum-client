@@ -23,6 +23,9 @@ namespace ClientApp.Models
                 IsChecked = Checked,
             };
 
+            checkBox.SetBinding(CheckBox.IsCheckedProperty, nameof(Checked));
+            checkBox.BindingContext = this;
+
             layout.Children.Add(label);
             layout.Children.Add(checkBox);
         }

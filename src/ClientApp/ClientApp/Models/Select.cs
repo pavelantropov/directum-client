@@ -32,6 +32,9 @@ namespace ClientApp.Models
                     picker.SelectedIndex = i;
                 }
             }
+            
+            // TODO set binding
+            picker.BindingContext = this;
 
             layout.Children.Add(label);
             layout.Children.Add(picker);

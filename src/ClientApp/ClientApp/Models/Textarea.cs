@@ -1,6 +1,7 @@
 ﻿using ClientApp.Helpers;
 using ClientApp.Models.Abstractions;
 using ClientApp.Models.Enums;
+using ClientApp.ViewModels;
 using Xamarin.Forms;
 
 namespace ClientApp.Models
@@ -23,10 +24,12 @@ namespace ClientApp.Models
             };
             var editor = new Editor
             {
-                Text = Value,
                 Placeholder = Placeholder,
                 IsEnabled = !Disabled,
             };
+
+            editor.SetBinding(Editor.TextProperty, nameof(Value));
+            editor.BindingContext = this;
 
             layout.Children.Add(label);
             layout.Children.Add(editor);

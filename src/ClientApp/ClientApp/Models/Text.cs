@@ -23,10 +23,12 @@ namespace ClientApp.Models
             };
             var entry = new Entry
             {
-                Text = Value,
                 Placeholder = Placeholder,
                 IsEnabled = !Disabled,
             };
+            
+            entry.SetBinding(Entry.TextProperty, nameof(Value));
+            entry.BindingContext = this;
 
             layout.Children.Add(label);
             layout.Children.Add(entry);

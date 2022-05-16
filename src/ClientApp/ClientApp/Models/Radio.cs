@@ -23,9 +23,12 @@ namespace ClientApp.Models
                 var radioButton = new RadioButton
                 {
                     IsEnabled = !Disabled,
-                    IsChecked = item.Checked,
                     Value = item.Value,
                 };
+
+                // TODO set bindings
+                // radioButton.SetBinding(RadioButton.IsCheckedProperty, new Binding("IsChecked"));
+                radioButton.BindingContext = this;
 
                 layout.Children.Add(label);
                 layout.Children.Add(radioButton);
